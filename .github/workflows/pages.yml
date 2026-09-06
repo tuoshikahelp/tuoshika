@@ -23,7 +23,7 @@ jobs:
       - name: Verify files
         run: |
           test -f public/index.html
-          test -f public/trust/directory
+          test -f public/trust/directory.tsl1
           test -f public/updates/stable-win64.json
 
       - name: Upload artifact
