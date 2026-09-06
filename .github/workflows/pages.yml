@@ -25,6 +25,7 @@ jobs:
           test -f public/index.html
           test -f public/trust/directory.tsl1
           test -f public/updates/stable-win64.json
+          test "$(find public -type f -exec cat {} + | tr -dc '\r' | wc -c)" = 0 || { echo 'CRLF в public/ — подпись у клиента не сойдётся'; exit 1; }
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
