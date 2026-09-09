@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Verify files
         run: |
@@ -28,7 +28,7 @@ jobs:
           test "$(find public -type f -exec cat {} + | tr -dc '\r' | wc -c)" = 0 || { echo 'CRLF в public/ — подпись у клиента не сойдётся'; exit 1; }
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: public
 
@@ -41,4 +41,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
